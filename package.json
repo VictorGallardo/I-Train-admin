@@ -2,13 +2,13 @@
   "name": "i-admin",
   "version": "0.0.0",
   "scripts": {
-    "heroku-postbuild": "ng build --prod",
     "ng": "ng",
     "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build  --aot --prod"
   },
   "engines": {
     "node": "14.16.0",
@@ -31,6 +31,7 @@
     "@angular/platform-browser": "~11.2.5",
     "@angular/platform-browser-dynamic": "~11.2.5",
     "@angular/router": "~11.2.5",
+    "express": "^4.17.1",
     "moment": "^2.29.1",
     "ngx-cookie-service": "^11.0.2",
     "path": "^0.12.7",
