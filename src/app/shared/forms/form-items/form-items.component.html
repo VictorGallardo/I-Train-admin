@@ -1,0 +1,237 @@
+<div class="form-container">
+  <mat-toolbar style="margin-bottom: 20px">
+    <span> Items </span>
+  </mat-toolbar>
+
+  <form #formItem="ngForm" (ngSubmit)="createdItem(formItem)">
+    <mat-divider> </mat-divider>
+
+    <mat-tab-group mat-align-tabs="center">
+      <mat-tab label="Título">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Título</mat-label>
+          <input
+            [(ngModel)]="item.title"
+            name="title"
+            type="text"
+            autocapitalize
+            matInput
+            placeholder="Título"
+            required
+          />
+          <mat-error>Se requiere título para crear un item</mat-error>
+        </mat-form-field></mat-tab
+      >
+      <mat-tab label="Descripción">
+        <mat-form-field appearance="fill" color="accent" class="full-width">
+          <input
+            [(ngModel)]="item.description"
+            name="description"
+            type="text"
+            autocapitalize
+            matInput
+            placeholder="Descripción"
+            required
+          /> </mat-form-field
+      ></mat-tab>
+      <mat-tab label="Lista ID">
+        <mat-form-field appearance="fill" color="accent" class="full-width">
+          <mat-label>Lista ID</mat-label>
+          <input
+            [(ngModel)]="listId"
+            [ngModelOptions]="{ standalone: true }"
+            type="text"
+            matInput
+            placeholder="Lista ID"
+            required
+          />
+          <mat-error *ngIf="item.list === ''"
+            >Se requiere un id de lista para crear un item</mat-error
+          >
+        </mat-form-field></mat-tab
+      >
+    </mat-tab-group>
+
+    <mat-divider> </mat-divider>
+
+    <mat-tab-group>
+      <mat-tab label="Preparación">
+        <mat-grid-list cols="2" rowHeight="120px">
+          <mat-grid-tile>
+            <mat-form-field appearance="fill" color="accent" class="time-input">
+              <mat-label>min</mat-label>
+              <input
+                [(ngModel)]="preparationMin"
+                [ngModelOptions]="{ standalone: true }"
+                type="number"
+                matInput
+                placeholder="min"
+                required
+              />
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field appearance="fill" color="accent" class="time-input">
+              <mat-label>seg</mat-label>
+
+              <input
+                [(ngModel)]="preparationSec"
+                [ngModelOptions]="{ standalone: true }"
+                type="number"
+                matInput
+                placeholder="min"
+                required
+              />
+            </mat-form-field>
+          </mat-grid-tile> </mat-grid-list
+      ></mat-tab>
+      <mat-tab label="Tiempo">
+        <mat-grid-list cols="2" rowHeight="120px">
+          <mat-grid-tile>
+            <mat-form-field appearance="fill" color="accent" class="time-input">
+              <mat-label>min</mat-label>
+              <input
+                [(ngModel)]="timeMin"
+                [ngModelOptions]="{ standalone: true }"
+                type="number"
+                matInput
+                placeholder="min"
+                required
+              />
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field appearance="fill" color="accent" class="time-input">
+              <mat-label>seg</mat-label>
+
+              <input
+                [(ngModel)]="timeSec"
+                [ngModelOptions]="{ standalone: true }"
+                type="number"
+                matInput
+                placeholder="min"
+                required
+              />
+            </mat-form-field>
+          </mat-grid-tile> </mat-grid-list
+      ></mat-tab>
+
+      <!-- DESCANSOS -->
+      <mat-tab label="Descansos">
+        <div style="margin-top: 10px"></div>
+        <mat-label class="title">Descanso Repeticiones</mat-label>
+        <mat-grid-list cols="2" rowHeight="100px">
+          <mat-grid-tile>
+            <mat-form-field appearance="fill" color="accent" class="time-input">
+              <mat-label>min</mat-label>
+              <input
+                [(ngModel)]="restRepsMin"
+                [ngModelOptions]="{ standalone: true }"
+                type="number"
+                matInput
+                placeholder="min"
+                required
+              />
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field appearance="fill" color="accent" class="time-input">
+              <mat-label>seg</mat-label>
+              <input
+                [(ngModel)]="restRepsSec"
+                [ngModelOptions]="{ standalone: true }"
+                type="number"
+                matInput
+                placeholder="min"
+                required
+              />
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <mat-divider style="margin: 0px 0px 10px 0px"> </mat-divider>
+
+        <mat-label class="title">Descanso Series</mat-label>
+        <mat-grid-list cols="2" rowHeight="100px">
+          <mat-grid-tile>
+            <mat-form-field appearance="fill" color="accent" class="time-input">
+              <mat-label>min</mat-label>
+              <input
+                [(ngModel)]="restSetsMin"
+                [ngModelOptions]="{ standalone: true }"
+                type="number"
+                matInput
+                placeholder="min"
+                required
+              />
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field appearance="fill" color="accent" class="time-input">
+              <mat-label>seg</mat-label>
+              <input
+                [(ngModel)]="restSetsSec"
+                [ngModelOptions]="{ standalone: true }"
+                type="number"
+                matInput
+                placeholder="min"
+                required
+              />
+            </mat-form-field>
+          </mat-grid-tile> </mat-grid-list
+      ></mat-tab>
+    </mat-tab-group>
+
+    <mat-divider> </mat-divider>
+
+    <!-- REPETICIONES Y SERIES -->
+    <mat-tab-group mat-align-tabs="center">
+      <mat-tab label="Repeticiones">
+        <mat-grid-list cols="1" rowHeight="100px">
+          <mat-grid-tile>
+            <mat-form-field appearance="fill" color="accent" class="time-input">
+              <mat-label>Repeticiones</mat-label>
+              <input
+                [(ngModel)]="item.repeats"
+                name="repeats"
+                type="number"
+                autocapitalize
+                matInput
+                placeholder="Repeticiones"
+                required
+              />
+            </mat-form-field>
+          </mat-grid-tile> </mat-grid-list
+      ></mat-tab>
+      <mat-tab label="Series">
+        <mat-grid-list cols="1" rowHeight="100px">
+          <mat-grid-tile>
+            <mat-form-field appearance="fill" color="accent" class="time-input">
+              <mat-label>Series</mat-label>
+              <input
+                [(ngModel)]="item.sets"
+                name="repeats"
+                type="number"
+                autocapitalize
+                matInput
+                placeholder="Series"
+                required
+              />
+            </mat-form-field>
+          </mat-grid-tile> </mat-grid-list
+      ></mat-tab>
+    </mat-tab-group>
+    <mat-divider style="margin: 0px 0px 10px 0px"> </mat-divider>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="buttons">
+          <button color="primary" type="submit" mat-raised-button>
+            Guardar
+          </button>
+          <button color="warn" (click)="closeDialog()" mat-raised-button>
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

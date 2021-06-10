@@ -1,0 +1,148 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import "~@angular/material/theming";
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-itraindark: (
+  50: #e6e7e7,
+  100: #c2c2c3,
+  200: #999a9b,
+  300: #707173,
+  400: #515255,
+  500: #323437,
+  600: #2d2f31,
+  700: #26272a,
+  800: #1f2123,
+  900: #131516,
+  A100: #67aef6,
+  A200: #3794f3,
+  A400: #007bf6,
+  A700: #006edd,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-itrainblue: (
+  50: #eef3f2,
+  100: #d4e2dd,
+  200: #b7cfc7,
+  300: #9abbb1,
+  400: #84ada0,
+  500: #6e9e8f,
+  600: #669687,
+  700: #5b8c7c,
+  800: #518272,
+  900: #3f7060,
+  A100: #c7ffec,
+  A200: #94ffdb,
+  A400: #61ffc9,
+  A700: #47ffc1,
+  contrast: (
+    50: #fff9f0,
+    100: #fff9f0,
+    200: #fff9f0,
+    300: #fff9f0,
+    400: #fff9f0,
+    500: #fff9f0,
+    600: #fff9f0,
+    700: #fff9f0,
+    800: #fff9f0,
+    900: #fff9f0,
+    A100: #fff9f0,
+    A200: #fff9f0,
+    A400: #fff9f0,
+    A700: #fff9f0,
+  ),
+);
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-itrainyellow: (
+  50: #fef7e5,
+  100: #fdecbf,
+  200: #fce094,
+  300: #fad369,
+  400: #f9c949,
+  500: #f8c029,
+  600: #f7ba24,
+  700: #f6b21f,
+  800: #f5aa19,
+  900: #f39c0f,
+  A100: #ffffff,
+  A200: #fff7eb,
+  A400: #ffe2b8,
+  A700: #ffd79f,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #000000,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$i-admin-primary: mat-palette($md-itrainblue);
+$i-admin-accent: mat-palette($md-itraindark);
+
+// The warn palette is optional (defaults to red).
+$i-admin-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$i-admin-theme: mat-light-theme(
+  (
+    color: (
+      primary: $i-admin-primary,
+      accent: $i-admin-accent,
+      warn: $i-admin-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($i-admin-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

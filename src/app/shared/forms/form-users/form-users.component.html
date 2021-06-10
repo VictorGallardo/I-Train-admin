@@ -1,0 +1,82 @@
+<div class="form-container">
+  <mat-toolbar style="margin-bottom: 20px">
+    <span> Usuario </span>
+  </mat-toolbar>
+  <!-- FORMULARIO -->
+  <form #formUser="ngForm" (ngSubmit)="createdUser(formUser)">
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field color="accent" class="full-width">
+          <input
+            [(ngModel)]="user.name"
+            name="name"
+            type="text"
+            autocapitalize
+            required
+            placeholder="Nombre"
+            matInput
+          />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field color="accent" class="full-width">
+          <input
+            [(ngModel)]="user.email"
+            name="email"
+            type="email"
+            required
+            placeholder="Email"
+            matInput
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field color="accent" class="full-width">
+          <input
+            [(ngModel)]="user.password"
+            name="password"
+            type="password"
+            required
+            placeholder="Password"
+            matInput
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <mat-radio-group
+          [(ngModel)]="roleUser"
+          [ngModelOptions]="{ standalone: true }"
+        >
+          <mat-radio-button color="primary" value="basic"
+            >Basic</mat-radio-button
+          >
+          <mat-radio-button color="primary" value="admin"
+            >Admin</mat-radio-button
+          >
+        </mat-radio-group>
+      </div>
+    </div>
+
+    <mat-divider style="margin: 0px 0px 10px 0px"> </mat-divider>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="buttons">
+          <button color="primary" type="submit" mat-raised-button>
+            Guardar
+          </button>
+          <button color="warn" (click)="closeUser()" mat-raised-button>
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,112 @@
+<div class="form-container">
+  <mat-toolbar style="margin-bottom: 20px">
+    <span class="space"></span>
+    <span>Nuevo Evento</span>
+    <span class="space"></span>
+  </mat-toolbar>
+
+  <!-- fORMULARIO -->
+  <form #formEvent="ngForm" (ngSubmit)="editEvent(formEvent)">
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field color="accent" class="full-width">
+          <input
+            [(ngModel)]="event.title"
+            name="title"
+            type="text"
+            autocapitalize
+            required
+            placeholder="Event"
+            matInput
+          />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field color="accent" class="full-width">
+          <input
+            [(ngModel)]="event.description"
+            name="description"
+            type="text"
+            autocapitalize
+            required
+            placeholder="Descripción"
+            matInput
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field appereance="fill">
+          <input
+            matInput
+            [ngxMatDatetimePicker]="start"
+            placeholder="Inicio"
+            [(ngModel)]="startDate"
+            [ngModelOptions]="{ standalone: true }"
+            [min]="minDate"
+            [max]="maxDate"
+            [disabled]="disabled"
+          />
+          <mat-datepicker-toggle matSuffix [for]="$any(start)">
+          </mat-datepicker-toggle>
+          <ngx-mat-datetime-picker
+            #start
+            [showSpinners]="showSpinners"
+            [showSeconds]="showSeconds"
+            [stepHour]="stepHour"
+            [stepMinute]="stepMinute"
+            [stepSecond]="stepSecond"
+            [touchUi]="touchUi"
+          >
+          </ngx-mat-datetime-picker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field appereance="fill">
+          <input
+            matInput
+            [ngxMatDatetimePicker]="end"
+            placeholder="Fin"
+            [(ngModel)]="endDate"
+            [ngModelOptions]="{ standalone: true }"
+            [min]="minDate"
+            [max]="maxDate"
+            [disabled]="disabled"
+          />
+          <mat-datepicker-toggle matSuffix [for]="$any(end)">
+          </mat-datepicker-toggle>
+          <ngx-mat-datetime-picker
+            #end
+            [showSpinners]="showSpinners"
+            [showSeconds]="showSeconds"
+            [stepHour]="stepHour"
+            [stepMinute]="stepMinute"
+            [stepSecond]="stepSecond"
+            [touchUi]="touchUi"
+          >
+          </ngx-mat-datetime-picker>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <mat-divider style="margin: 0px 0px 10px 0px"> </mat-divider>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="buttons">
+          <button color="primary" type="submit" mat-raised-button>
+            Guardar
+          </button>
+          <button color="warn" (click)="closeEvent()" mat-raised-button>
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

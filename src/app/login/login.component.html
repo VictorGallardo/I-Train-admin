@@ -1,0 +1,35 @@
+<div class="login">
+  <form #loginForm="ngForm" class="custom-form" (ngSubmit)="login(loginForm)">
+    <img src="../../assets/img/logo-iadmin-01.png" alt="" />
+
+    <input
+      [(ngModel)]="loginUser.email"
+      type="email"
+      name="email"
+      placeholder="Email"
+      required
+    />
+    <input
+      [(ngModel)]="loginUser.password"
+      type="password"
+      ngModel
+      name="password"
+      placeholder="Contraseña"
+      required
+    />
+    <mat-checkbox
+      [(ngModel)]="checked"
+      name="check"
+      type="checkbox"
+      color="primary"
+      class="check"
+    >
+      Recuerdame
+    </mat-checkbox>
+    <button type="submit">Log in</button>
+  </form>
+</div>
+
+<div *ngIf="progress" class="progress">
+  <mat-progress-bar color="primary" mode="indeterminate"> </mat-progress-bar>
+</div>

@@ -1,0 +1,15 @@
+<div class="dialog">
+  <mat-icon style="margin-bottom: 30px" color="warn">warning</mat-icon>
+
+  <h1 mat-dialog-title>¿Estás seguro?</h1>
+  <div mat-dialog-content>
+    ¿De verdad quieres eliminar este registro? este proceso no se puede
+    deshacer.
+  </div>
+  <div mat-dialog-actions>
+    <button (click)="closeDialog()" mat-raised-button>Cancelar</button>
+    <button (click)="deleteRecord()" mat-raised-button color="warn">
+      Eliminar
+    </button>
+  </div>
+</div>

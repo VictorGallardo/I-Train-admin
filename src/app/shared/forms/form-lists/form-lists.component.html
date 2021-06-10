@@ -1,0 +1,54 @@
+<div class="form-container">
+  <mat-toolbar style="margin-bottom: 20px">
+    <span class="space"></span>
+    <span> Listas </span>
+    <span class="space"></span>
+  </mat-toolbar>
+
+  <!-- fORMULARIO -->
+  <form #formList="ngForm" (ngSubmit)="createdList(formList)">
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field color="accent" class="full-width">
+          <input
+            [(ngModel)]="list.title"
+            name="title"
+            type="text"
+            autocapitalize
+            required
+            placeholder="Lista"
+            matInput
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-6" *ngIf="switchOn === true">
+        <mat-form-field color="accent" class="full-width">
+          <input
+            type="text"
+            autocapitalize
+            required
+            placeholder="Usuario ID"
+            matInput
+          />
+        </mat-form-field>
+      </div>
+      <mat-slide-toggle color="primary" style="margin: 20px" (click)="switch()"
+        >Añadir esta lista a un usuario</mat-slide-toggle
+      >
+    </div>
+    <mat-divider style="margin: 0px 0px 10px 0px"> </mat-divider>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="buttons">
+          <button color="primary" type="submit" mat-raised-button>
+            Guardar
+          </button>
+          <button color="warn" (click)="closeList()" mat-raised-button>
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
