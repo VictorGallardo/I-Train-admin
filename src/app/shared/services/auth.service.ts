@@ -3,8 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
-import { IUser, IRespUser } from '../../interfaces/interfaces';
-import { UsersService } from './users.service';
+import { IUser } from '../../interfaces/interfaces';
 
 const URL = environment.url;
 
@@ -21,8 +20,7 @@ export class AuthService {
       private http: HttpClient,
       private cookies: CookieService,
       private router: Router,
-      private usersService: UsersService
-    ) { }
+  ) { }
 
 
 
@@ -52,6 +50,7 @@ export class AuthService {
         .subscribe(async resp => { // Ingresamos
 
           if (resp['ok']) {
+            console.log(resp);
 
             await this.saveToken(resp['token']); // Async para que espera a guardar el token
             resolve(true);
@@ -76,16 +75,6 @@ export class AuthService {
     this.router.navigateByUrl('/login'); // Volvemos al login.
 
   }
-
-
-  // Obtener información del usuario ----------------------------------------------
-
-  // getUser() {
-  //   if (!this.user) {
-  //     this.validateToken();
-  //   }
-  //   return { ...this.user }; // Se destruye la relación, para generar un nuevo objeto
-  // }
 
 
   // Guardar el token en las cookies
@@ -145,3 +134,4 @@ export class AuthService {
 
 
 }
+
