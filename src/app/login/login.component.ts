@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
       if (resp) {
 
         this.progress = false;
-        this.router.navigate(['/dashboard'])
+        this.router.navigate(['/info'])
 
       } else {
         alert('Email o contraseña incorrectos');

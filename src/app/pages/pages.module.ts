@@ -25,6 +25,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { EventsComponent } from './events/events.component';
+import { InfoComponent } from './info/info.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { EventsComponent } from './events/events.component';
       ListsComponent,
       ItemsComponent,
       EventsComponent,
+      InfoComponent,
     ],
   imports:
     [

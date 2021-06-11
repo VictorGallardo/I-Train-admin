@@ -7,6 +7,7 @@ import { UsersComponent } from './users/users.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginGuard } from '../guards/login.guard';
 import { EventsComponent } from './events/events.component';
+import { InfoComponent } from './info/info.component';
 
 const pagesRoutes: Routes = [
   {
@@ -36,8 +37,13 @@ const pagesRoutes: Routes = [
           component: EventsComponent
         },
         {
+          path: 'info',
+          component: InfoComponent
+        },
+
+        {
           path: '',
-          redirectTo: '/dashboard',
+          redirectTo: '/info',
           pathMatch: 'full'
         }
       ]

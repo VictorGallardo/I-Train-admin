@@ -114,7 +114,7 @@ $md-itrainyellow: (
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $i-admin-primary: mat-palette($md-itrainblue);
-$i-admin-accent: mat-palette($md-itraindark);
+$i-admin-accent: mat-palette($md-itrainblue);
 
 // The warn palette is optional (defaults to red).
 $i-admin-warn: mat-palette($mat-red);

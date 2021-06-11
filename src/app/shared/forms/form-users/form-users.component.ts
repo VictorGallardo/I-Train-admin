@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { UiService } from '../../services/ui.service';
 import { UsersService } from '../../services/users.service';
 
 @Component({
@@ -12,8 +11,11 @@ import { UsersService } from '../../services/users.service';
 export class FormUsersComponent implements OnInit {
 
   modeUpdate: boolean;
-
+  switchOn: boolean = false;
   roleUser: string
+  password1: string;
+  password2: string;
+  passCheck: boolean;
 
   user = {
     name: '',
@@ -22,15 +24,58 @@ export class FormUsersComponent implements OnInit {
     role: ''
   }
 
+
   constructor
     (
       @Inject(MAT_DIALOG_DATA) public data: any,
       private usersService: UsersService,
       public dialog: MatDialog,
-      private uiService: UiService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
+
+    if (this.data) {
+
+      this.modeUpdate = true;
+      this.user = this.data;
+      this.roleUser = this.data.role;
+
+    }
+  }
+
+  switch() {
+
+    if (this.switchOn) {
+      this.switchOn = false
+    } else {
+      this.switchOn = true
+    }
+
+  }
+
+  checkPassword() {
+
+    this.password1
+    this.password2
+
+    if (this.password1 == '') {
+
+      alert("Please enter Password");
+    } else if (this.password2 == '') {
+
+      alert("Please enter confirm password");
+
+    } else if (this.password1 != this.password2) {
+
+      alert("\nLas contraseñas no coinciden: Por favor vuelva a intentarlo.");
+
+      this.passCheck = false;
+
+    } else {
+
+      this.passCheck = true;
+
+    }
   }
 
 
@@ -38,36 +83,69 @@ export class FormUsersComponent implements OnInit {
 
     if (this.modeUpdate) {
 
-      if (formUser.invalid) { return; }
+      this.user.role = this.roleUser;
 
-      const update = await this.usersService.updateUser(this.data._id, this.user)
+      if (this.switchOn) {
 
-      if (update) {
+        this.checkPassword();
 
-        this.dialog.closeAll();
+        if (this.passCheck) {
 
-        this.user = {
-          name: '',
-          email: '',
-          password: '',
-          role: ''
+          this.user.password = this.password1;
+          if (formUser.invalid) { return; }
+          const update = await this.usersService.updateUser(this.data._id, this.user)
+
+          if (update) {
+
+            this.dialog.closeAll();
+
+            this.user = {
+              name: '',
+              email: '',
+              password: '',
+              role: ''
+            }
+
+          } else {
+            alert('Error al actualizar usuario')
+          }
         }
 
       } else {
-        alert('Error al actualizar lista')
+        if (formUser.invalid) { return; }
+        const update = await this.usersService.updateUser(this.data._id, this.user)
+
+        if (update) {
+
+          this.dialog.closeAll();
+
+          this.user = {
+            name: '',
+            email: '',
+            password: '',
+            role: ''
+          }
+
+        } else {
+          alert('Error al actualizar usuario')
+        }
+
       }
 
     } else {
 
-      this.user.role = this.roleUser;
+      this.checkPassword();
 
       if (formUser.invalid) { return; }
 
+      if (this.passCheck) {
+        this.user.password = this.password1;
+        this.user.role = this.roleUser;
+      }
       const valid = await this.usersService.createUser(this.user);
 
       if (valid) {
 
-        console.log(this.user);
         this.dialog.closeAll();
         this.user = {
           name: '',
@@ -77,7 +155,7 @@ export class FormUsersComponent implements OnInit {
         }
 
       } else {
-        alert('Error al crear lista')
+        alert('Error al crear usuario')
       }
 
     }
@@ -85,9 +163,11 @@ export class FormUsersComponent implements OnInit {
 
   closeUser() {
 
+    this.modeUpdate = false;
     this.dialog.closeAll();
 
 
   }
 
 }
+

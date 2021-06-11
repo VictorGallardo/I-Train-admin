@@ -41,12 +41,12 @@
     <!-- Butons -->
     <ng-container matColumnDef="buttons">
       <th mat-header-cell *matHeaderCellDef>
-        <button (click)="addListDialog()" mat-raised-button color="accent">
+        <button (click)="addListDialog()" mat-stroked-button color="primary">
           <mat-icon>add</mat-icon> Añadir lista
         </button>
       </th>
       <td mat-cell *matCellDef="let list; let i = index">
-        <button (click)="editList(list)" mat-icon-button>
+        <button (click)="editList(list)" mat-icon-button color="primary">
           <mat-icon>launch</mat-icon>
         </button>
         <button
