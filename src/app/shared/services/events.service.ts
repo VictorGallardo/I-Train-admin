@@ -27,7 +27,7 @@ export class EventsService {
       'x-token': this.userService.token // Traemos el token del userService
     });
 
-    return this.http.get<IRespEvent>(`${URL}/events/`, { headers }); // Hay que pasarle el header aqui IMPORTANTE!!
+    return this.http.get<IRespEvent>(`${URL}/events/all`, { headers }); // Hay que pasarle el header aqui IMPORTANTE!!
   }
 
 
