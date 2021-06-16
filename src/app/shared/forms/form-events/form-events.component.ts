@@ -38,6 +38,7 @@ export class FormEventsComponent implements OnInit {
 
   endDate: string;
   startDate: string;
+  switchOn: boolean;
 
   modeUpdate: boolean;
 
@@ -116,6 +117,16 @@ export class FormEventsComponent implements OnInit {
         alert('Error al crear evento')
       }
 
+    }
+
+  }
+
+  switch() {
+
+    if (this.switchOn) {
+      this.switchOn = false
+    } else {
+      this.switchOn = true
     }
 
   }

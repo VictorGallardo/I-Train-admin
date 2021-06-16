@@ -95,6 +95,22 @@
       </div>
     </div>
 
+    <div class="col-md-6" *ngIf="switchOn === true">
+      <mat-form-field color="accent" class="full-width">
+        <input
+          type="text"
+          autocapitalize
+          disabled
+          placeholder="Esta función no está disponible aún"
+          matInput
+        />
+      </mat-form-field>
+    </div>
+
+    <mat-slide-toggle color="primary" style="margin: 20px" (click)="switch()"
+      >Añadir este evento a un usuario</mat-slide-toggle
+    >
+
     <mat-divider style="margin: 0px 0px 10px 0px"> </mat-divider>
     <div class="row">
       <div class="col-md-6">

@@ -33,6 +33,7 @@ export class DeleteDialogComponent implements OnInit {
     const type = this.data.option;
 
     switch (type) {
+
       case 'user': {
         this.usersService.deleteUser(this.data.id);
         this.dialog.closeAll();
@@ -41,6 +42,7 @@ export class DeleteDialogComponent implements OnInit {
 
       case 'list': {
         this.listsService.deleteList(this.data.id);
+        this.itemsService.deleteItemsList(this.data.id);
         this.dialog.closeAll();
         break;
       }

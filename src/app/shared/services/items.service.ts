@@ -87,4 +87,24 @@ export class ItemsService {
     });
   }
 
+  // Eliminar Items cuando se borra una lista
+
+  async deleteItemsList(listId: string) {
+    return new Promise(resolve => {
+      this.http.delete<IRespItem>(`${URL}/items/delete/items/${listId}`)
+        .subscribe(resp => {
+
+          if (resp['ok']) {
+            resolve(true);
+            console.log('Items eliminados correctamente');
+            console.log(resp)
+          } else {
+            resolve(false);
+            console.error('Error al eliminar items');
+
+          }
+        });
+    });
+  }
+
 }
